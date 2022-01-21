@@ -7,6 +7,13 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submit");
+    let amount = parseInt(count);
+    if (count <= 0) {
+      amount = 1;
+    } else if (count > 9) {
+      amount = 9;
+    }
+    setText(data.slice(0, amount));
   };
 
   return (
@@ -24,12 +31,9 @@ function App() {
         <button className="btn">Generate</button>
       </form>
       <article>
-        <p>
-          Jelly sweet roll jelly beans biscuit pie macaroon chocolate donut.
-          Carrot cake caramels pie sweet apple pie tiramisu carrot cake.
-          Marzipan marshmallow croissant tootsie roll lollipop. Cupcake lemon
-          drops bear claw gummies.{" "}
-        </p>
+        {text.map((item, index) => {
+          return <p key={index}>{item}</p>;
+        })}
       </article>
     </section>
   );
